@@ -1,0 +1,1928 @@
+
+/* ==================================================
+   1. CONFIGURAÇÕES GERAIS
+================================================== */
+
+:root {
+    --fundo: #fffaf5;
+    --branco: #ffffff;
+    --texto: #292522;
+    --cinza: #77716c;
+    --laranja: #ed7026;
+    --laranja-escuro: #c95413;
+    --escuro: #211b18;
+    --borda: #eee4dc;
+    --sombra: 0 8px 25px rgba(35, 24, 18, 0.09);
+
+    --altura-header: 76px;
+    --espacamento-secao: clamp(35px, 5vw, 70px);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    width: 100%;
+    max-width: 100%;
+    scroll-behavior: smooth;
+    scroll-padding-top: calc(var(--altura-header) + 12px);
+    -webkit-text-size-adjust: 100%;
+}
+
+body {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    overflow-x: clip;
+    font-family: 'Montserrat', Arial, sans-serif;
+    background: var(--fundo);
+    color: var(--texto);
+    line-height: 1.6;
+}
+
+body.modal-aberto {
+    overflow: hidden;
+}
+
+main,
+header,
+footer,
+section,
+nav,
+div,
+article {
+    min-width: 0;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+}
+
+button,
+input,
+textarea,
+select {
+    font: inherit;
+    max-width: 100%;
+}
+
+button,
+a {
+    -webkit-tap-highlight-color: transparent;
+}
+
+button {
+    cursor: pointer;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+[hidden] {
+    display: none !important;
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+    outline: 3px solid rgba(237, 112, 38, 0.4);
+    outline-offset: 3px;
+}
+
+/* ==================================================
+   2. CABEÇALHO EM TODAS AS TELAS
+================================================== */
+
+.cabecalho {
+    width: 100%;
+    min-height: var(--altura-header);
+    padding: 12px clamp(12px, 3vw, 40px);
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+
+    position: sticky;
+    top: 0;
+    z-index: 100;
+
+    background: var(--branco);
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
+}
+
+.logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+
+    font-size: clamp(17px, 1.5vw, 22px);
+    font-weight: 800;
+    white-space: nowrap;
+}
+
+.logo strong {
+    color: var(--laranja);
+}
+
+.navegacao {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: clamp(12px, 2vw, 28px);
+}
+
+.navegacao a {
+    font-size: 13px;
+    font-weight: 600;
+    white-space: nowrap;
+    transition: color 0.2s;
+}
+
+.navegacao a:hover {
+    color: var(--laranja);
+}
+
+.menu-toggle {
+    display: none;
+    flex-shrink: 0;
+
+    padding: 5px;
+    border: 0;
+    background: transparent;
+
+    color: var(--texto);
+    font-size: 27px;
+    line-height: 1;
+}
+
+/* ==================================================
+   3. BOTÕES
+================================================== */
+
+.botao {
+    min-height: 46px;
+    padding: 13px 22px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+
+    border: 0;
+    border-radius: 7px;
+
+    font-size: 13px;
+    font-weight: 800;
+    text-align: center;
+    line-height: 1.4;
+
+    cursor: pointer;
+    transition:
+        background 0.2s,
+        transform 0.2s;
+}
+
+.botao:hover {
+    transform: translateY(-2px);
+}
+
+.botao-principal {
+    background: var(--laranja);
+    color: var(--branco);
+}
+
+.botao-principal:hover {
+    background: var(--laranja-escuro);
+}
+
+.botao-largo {
+    width: 100%;
+}
+
+/* ==================================================
+   4. BANNER PRINCIPAL
+================================================== */
+
+.hero {
+    width: 100%;
+    min-height: clamp(400px, 48vw, 580px);
+    padding: clamp(35px, 7vw, 95px) clamp(16px, 5vw, 70px);
+
+    display: flex;
+    align-items: center;
+
+    color: var(--branco);
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(20, 15, 12, 0.92) 0%,
+            rgba(20, 15, 12, 0.72) 55%,
+            rgba(20, 15, 12, 0.25) 100%
+        ),
+        url("https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=1800&q=85")
+        center / cover no-repeat;
+}
+
+.hero-conteudo {
+    width: 100%;
+    max-width: 700px;
+}
+
+.etiqueta,
+.subtitulo {
+    display: inline-block;
+    color: var(--laranja);
+
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    line-height: 1.6;
+}
+
+.hero .etiqueta {
+    color: #ffb27f;
+    margin-bottom: 16px;
+}
+
+.hero h1 {
+    max-width: 700px;
+    margin-bottom: 20px;
+
+    font-size: clamp(32px, 5vw, 62px);
+    line-height: 1.12;
+    overflow-wrap: break-word;
+}
+
+.hero h1 span {
+    color: #ff9a52;
+}
+
+.hero p {
+    max-width: 520px;
+    margin-bottom: 28px;
+
+    color: #f1eae4;
+    font-size: clamp(13px, 1.4vw, 16px);
+}
+
+.hero .botao {
+    max-width: 100%;
+}
+
+/* ==================================================
+   5. SEÇÕES DO CARDÁPIO
+================================================== */
+
+.secao {
+    width: 100%;
+    padding: var(--espacamento-secao) clamp(12px, 3vw, 40px);
+}
+
+.secao-especiais {
+    background: #f4ece4;
+}
+
+.titulo-secao {
+    width: 100%;
+    margin: 0 auto 32px;
+    text-align: center;
+}
+
+.titulo-secao h2 {
+    margin: 8px 0;
+    font-size: clamp(25px, 3vw, 38px);
+    line-height: 1.25;
+    overflow-wrap: break-word;
+}
+
+.titulo-secao p {
+    color: var(--cinza);
+    font-size: 13px;
+}
+
+/* ==================================================
+   6. GRADE DOS PRATOS
+================================================== */
+
+.grade-cardapio {
+    width: 100%;
+    max-width: 1500px;
+    margin: 0 auto;
+
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: clamp(12px, 2vw, 26px);
+}
+
+.card-prato {
+    min-width: 0;
+    width: 100%;
+
+    overflow: hidden;
+
+    background: var(--branco);
+    border: 1px solid var(--borda);
+    border-radius: 12px;
+    box-shadow: var(--sombra);
+
+    transition: transform 0.25s, box-shadow 0.25s;
+}
+
+.card-prato:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 30px rgba(35, 24, 18, 0.13);
+}
+
+/* Imagens clicáveis */
+
+.card-imagem-botao {
+    display: block;
+    width: 100%;
+    padding: 0;
+    overflow: hidden;
+
+    border: 0;
+    background: #eee4dc;
+    text-align: left;
+}
+
+.card-prato img {
+    display: block;
+    width: 100%;
+    height: clamp(160px, 20vw, 270px);
+
+    object-fit: cover;
+    object-position: center;
+
+    transition: transform 0.3s;
+}
+
+.card-imagem-botao:hover img {
+    transform: scale(1.035);
+}
+
+.card-conteudo {
+    padding: clamp(12px, 1.7vw, 22px);
+}
+
+.card-conteudo h3 {
+    margin-bottom: 8px;
+    font-size: clamp(14px, 1.5vw, 18px);
+    line-height: 1.4;
+    overflow-wrap: anywhere;
+}
+
+.card-conteudo p {
+    min-height: 48px;
+    color: var(--cinza);
+
+    font-size: 12px;
+    line-height: 1.7;
+    overflow-wrap: anywhere;
+}
+
+.card-rodape {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+
+    margin-top: 16px;
+    padding-top: 15px;
+    border-top: 1px solid var(--borda);
+}
+
+.preco {
+    color: var(--laranja-escuro);
+    font-size: clamp(16px, 1.8vw, 21px);
+    font-weight: 800;
+    white-space: nowrap;
+}
+
+.botao-pedir {
+    min-height: 39px;
+    padding: 10px 14px;
+
+    border: 0;
+    border-radius: 6px;
+
+    background: var(--laranja);
+    color: var(--branco);
+
+    font-size: 11px;
+    font-weight: 800;
+}
+
+.botao-pedir:hover {
+    background: var(--laranja-escuro);
+}
+
+.texto-ver-detalhes {
+    margin-top: 12px;
+    color: var(--cinza);
+    font-size: 10px;
+}
+
+/* ==================================================
+   7. CHAMADA FINAL
+================================================== */
+
+.chamada-pedido {
+    width: calc(100% - clamp(24px, 6vw, 80px));
+    max-width: 1500px;
+
+    margin: 10px auto clamp(35px, 5vw, 65px);
+    padding: clamp(22px, 4vw, 45px);
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 25px;
+
+    border-radius: 12px;
+    background: var(--escuro);
+    color: var(--branco);
+}
+
+.chamada-pedido > div {
+    min-width: 0;
+}
+
+.chamada-pedido h2 {
+    margin: 8px 0;
+    font-size: clamp(22px, 3vw, 36px);
+    line-height: 1.3;
+    overflow-wrap: break-word;
+}
+
+.chamada-pedido p {
+    color: #d4c9c2;
+    font-size: 13px;
+}
+
+/* ==================================================
+   8. RODAPÉ
+================================================== */
+
+.rodape {
+    width: 100%;
+    padding: 32px 15px;
+
+    background: #171311;
+    color: var(--branco);
+    text-align: center;
+}
+
+.logo-rodape {
+    justify-content: center;
+    margin-bottom: 10px;
+    white-space: normal;
+}
+
+.rodape p {
+    color: #c8bdb6;
+    font-size: 12px;
+    overflow-wrap: anywhere;
+}
+
+.copyright {
+    margin-top: 16px;
+}
+
+/* ==================================================
+   9. JANELAS MODAIS
+================================================== */
+
+.modal {
+    display: none;
+
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+
+    width: 100%;
+    height: 100%;
+    height: 100dvh;
+
+    padding: clamp(8px, 2vw, 24px);
+
+    align-items: center;
+    justify-content: center;
+
+    overflow-x: hidden;
+    overflow-y: auto;
+
+    background: rgba(18, 13, 10, 0.76);
+    overscroll-behavior: contain;
+}
+
+.modal.aberto {
+    display: flex;
+    animation: aparecer 0.2s ease;
+}
+
+.modal-conteudo {
+    position: relative;
+
+    width: 100%;
+    max-width: 600px;
+    min-width: 0;
+
+    max-height: calc(100dvh - 32px);
+    overflow-x: hidden;
+    overflow-y: auto;
+
+    background: var(--branco);
+    border-radius: 14px;
+    box-shadow: 0 20px 70px rgba(0, 0, 0, 0.28);
+
+    overscroll-behavior: contain;
+    -webkit-overflow-scrolling: touch;
+}
+
+.fechar-modal {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    z-index: 5;
+
+    width: 40px;
+    height: 40px;
+    display: grid;
+    place-items: center;
+
+    border: 0;
+    border-radius: 50%;
+
+    background: rgba(25, 20, 16, 0.83);
+    color: var(--branco);
+
+    font-size: 28px;
+    line-height: 1;
+}
+
+.fechar-modal:hover {
+    background: var(--laranja-escuro);
+}
+
+@keyframes aparecer {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes subir {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ==================================================
+   10. DETALHES DO PRATO
+================================================== */
+
+.modal-prato-conteudo {
+    max-width: 680px;
+    animation: subir 0.22s ease;
+}
+
+.detalhe-imagem {
+    display: block;
+    width: 100%;
+    height: clamp(200px, 38vh, 360px);
+
+    object-fit: cover;
+    object-position: center;
+
+    background: #eee4dc;
+}
+
+.detalhe-corpo {
+    padding: clamp(16px, 3vw, 28px);
+}
+
+.detalhe-corpo h2 {
+    margin: 7px 0 12px;
+
+    font-size: clamp(22px, 3vw, 29px);
+    line-height: 1.3;
+    overflow-wrap: anywhere;
+}
+
+.detalhe-corpo > p {
+    color: var(--cinza);
+    font-size: 13px;
+    line-height: 1.8;
+    overflow-wrap: anywhere;
+}
+
+.detalhe-preco {
+    margin-top: 12px;
+
+    color: var(--laranja-escuro);
+    font-size: clamp(23px, 4vw, 29px);
+    font-weight: 800;
+}
+
+.quantidade-controle {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+
+    margin-top: 20px;
+    padding: 15px 0;
+
+    border-top: 1px solid var(--borda);
+    border-bottom: 1px solid var(--borda);
+
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.quantidade-botoes {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.quantidade-botoes button {
+    width: 38px;
+    height: 38px;
+    flex-shrink: 0;
+
+    border: 1px solid var(--borda);
+    border-radius: 7px;
+
+    background: var(--fundo);
+    color: var(--texto);
+
+    font-size: 21px;
+}
+
+.quantidade-botoes button:hover {
+    background: #f7e4d5;
+}
+
+.quantidade-botoes span {
+    min-width: 20px;
+    text-align: center;
+}
+
+.detalhe-total {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+
+    margin: 17px 0 20px;
+    font-size: 14px;
+}
+
+.detalhe-total strong {
+    font-size: 20px;
+}
+
+/* ==================================================
+   11. FORMULÁRIO DO PEDIDO
+================================================== */
+
+.modal-pedido-conteudo {
+    max-width: 540px;
+    padding: clamp(18px, 3vw, 30px);
+    animation: subir 0.22s ease;
+}
+
+.formulario-cabecalho {
+    padding-right: 30px;
+    margin-bottom: 20px;
+}
+
+.formulario-cabecalho h2 {
+    margin: 6px 0;
+    font-size: clamp(22px, 3vw, 28px);
+    line-height: 1.3;
+}
+
+.formulario-cabecalho p {
+    color: var(--cinza);
+    font-size: 12px;
+}
+
+.resumo-pedido {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+
+    padding: 15px;
+    margin-bottom: 22px;
+
+    border: 1px solid #f1d6c4;
+    border-radius: 9px;
+    background: #fff5ed;
+}
+
+.resumo-pedido > div {
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.resumo-label {
+    color: var(--cinza);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.resumo-pedido strong {
+    font-size: 13px;
+    overflow-wrap: anywhere;
+}
+
+.resumo-pedido #resumoQuantidade {
+    color: var(--cinza);
+    font-size: 11px;
+}
+
+.resumo-pedido .resumo-valor {
+    flex-shrink: 0;
+    color: var(--laranja-escuro);
+    font-size: clamp(16px, 3vw, 20px);
+    white-space: nowrap;
+}
+
+.campo {
+    width: 100%;
+    min-width: 0;
+
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+
+    margin-bottom: 16px;
+}
+
+.campo label {
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.campo input,
+.campo textarea,
+.campo select {
+    display: block;
+    width: 100%;
+    min-width: 0;
+    min-height: 46px;
+
+    padding: 12px;
+
+    border: 1px solid #ded5ce;
+    border-radius: 7px;
+
+    background: var(--branco);
+    color: var(--texto);
+
+    font-size: 16px;
+}
+
+.campo input::placeholder,
+.campo textarea::placeholder {
+    color: #a29a93;
+    font-size: 13px;
+}
+
+.campo textarea {
+    min-height: 82px;
+    resize: vertical;
+}
+
+.campo small {
+    color: var(--cinza);
+    font-size: 11px;
+}
+
+.aviso-pedido {
+    margin: 8px 0 18px;
+    padding: 12px;
+
+    border-radius: 7px;
+    background: #f7f2ed;
+    color: #66564b;
+
+    font-size: 11px;
+    line-height: 1.7;
+}
+
+.nota-seguranca {
+    margin-top: 12px;
+
+    color: var(--cinza);
+    font-size: 10px;
+    line-height: 1.6;
+    text-align: center;
+}
+
+/* ==================================================
+   12. COMPUTADORES E TELAS GRANDES
+================================================== */
+
+@media (min-width: 1500px) {
+    .grade-cardapio {
+        gap: 30px;
+    }
+
+    .card-conteudo {
+        padding: 24px;
+    }
+
+    .hero {
+        padding-left: max(5%, calc((100% - 1400px) / 2));
+    }
+}
+
+/* ==================================================
+   13. NOTEBOOKS E TABLETS GRANDES
+================================================== */
+
+@media (max-width: 1100px) {
+    .cabecalho {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    .navegacao {
+        gap: 14px;
+    }
+
+    .navegacao a {
+        font-size: 12px;
+    }
+
+    .grade-cardapio {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .card-prato img {
+        height: clamp(180px, 25vw, 280px);
+    }
+}
+
+/* ==================================================
+   14. TABLETS
+================================================== */
+
+@media (max-width: 768px) {
+    :root {
+        --altura-header: 68px;
+    }
+
+    .cabecalho {
+        padding: 10px 16px;
+        gap: 10px;
+    }
+
+    .navegacao {
+        gap: 12px;
+    }
+
+    .navegacao a {
+        font-size: 11px;
+    }
+
+    .hero {
+        min-height: 430px;
+        padding: 45px 24px;
+        background-position: 58% center;
+    }
+
+    .secao {
+        padding: 45px 16px;
+    }
+
+    .grade-cardapio {
+        gap: 16px;
+    }
+
+    .card-prato img {
+        height: 220px;
+    }
+
+    .card-conteudo {
+        padding: 16px;
+    }
+
+    .card-conteudo h3 {
+        font-size: 16px;
+    }
+
+    .chamada-pedido {
+        width: calc(100% - 32px);
+        padding: 25px;
+        gap: 18px;
+    }
+
+    .modal {
+        padding: 14px;
+    }
+
+    .modal-conteudo {
+        max-height: calc(100dvh - 28px);
+    }
+}
+
+/* ==================================================
+   15. CELULARES
+================================================== */
+
+@media (max-width: 600px) {
+    .cabecalho {
+        min-height: var(--altura-header);
+        padding: 10px 14px;
+    }
+
+    .logo {
+        font-size: 18px;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+
+    .navegacao {
+        display: none;
+
+        position: absolute;
+        top: 100%;
+        left: 0;
+
+        width: 100%;
+        padding: 10px 14px 18px;
+
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+
+        background: var(--branco);
+        box-shadow: 0 8px 15px rgba(0, 0, 0, 0.08);
+    }
+
+    .navegacao.ativo {
+        display: flex;
+    }
+
+    .navegacao a {
+        width: 100%;
+        padding: 12px 5px;
+        font-size: 13px;
+    }
+
+    .hero {
+        width: 100%;
+        min-height: 420px;
+        padding: 40px 18px;
+
+        background:
+            linear-gradient(
+                90deg,
+                rgba(20, 15, 12, 0.91),
+                rgba(20, 15, 12, 0.65)
+            ),
+            url("https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=1000&q=85")
+            center / cover no-repeat;
+    }
+
+    .hero h1 {
+        font-size: clamp(31px, 8vw, 40px);
+    }
+
+    .hero p {
+        font-size: 13px;
+    }
+
+    .hero .botao {
+        width: 100%;
+        max-width: 350px;
+    }
+
+    .secao {
+        padding: 38px 12px;
+    }
+
+    .titulo-secao {
+        margin-bottom: 24px;
+        padding: 0 4px;
+    }
+
+    .titulo-secao h2 {
+        font-size: 27px;
+    }
+
+    .titulo-secao p {
+        font-size: 12px;
+    }
+
+    .grade-cardapio {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 16px;
+    }
+
+    .card-prato {
+        width: 100%;
+        border-radius: 10px;
+    }
+
+    .card-prato img {
+        width: 100%;
+        height: clamp(190px, 58vw, 300px);
+    }
+
+    .card-conteudo {
+        padding: 16px;
+    }
+
+    .card-conteudo h3 {
+        font-size: 17px;
+    }
+
+    .card-conteudo p {
+        min-height: 0;
+        font-size: 12px;
+    }
+
+    .card-rodape {
+        gap: 12px;
+    }
+
+    .preco {
+        font-size: 19px;
+    }
+
+    .botao-pedir {
+        min-height: 42px;
+        padding: 11px 16px;
+        font-size: 12px;
+    }
+
+    .chamada-pedido {
+        width: calc(100% - 24px);
+        margin: 0 auto 35px;
+        padding: 24px 18px;
+
+        flex-direction: column;
+        align-items: stretch;
+        gap: 20px;
+
+        border-radius: 10px;
+        text-align: center;
+    }
+
+    .chamada-pedido h2 {
+        font-size: 25px;
+    }
+
+    .chamada-pedido .botao {
+        width: 100%;
+    }
+
+    .rodape {
+        padding: 28px 14px;
+    }
+
+    /* MODAIS NO CELULAR */
+
+    .modal {
+        padding: 8px;
+        align-items: center;
+    }
+
+    .modal-conteudo {
+        width: 100%;
+        max-width: 480px;
+        max-height: calc(100dvh - 16px);
+        border-radius: 11px;
+    }
+
+    .detalhe-imagem {
+        height: clamp(180px, 31vh, 260px);
+    }
+
+    .detalhe-corpo {
+        padding: 17px;
+    }
+
+    .detalhe-corpo h2 {
+        font-size: 23px;
+    }
+
+    .detalhe-corpo > p {
+        font-size: 12px;
+    }
+
+    .quantidade-controle {
+        margin-top: 15px;
+        padding: 12px 0;
+    }
+
+    .modal-pedido-conteudo {
+        padding: 21px 16px;
+    }
+
+    .formulario-cabecalho {
+        margin-bottom: 17px;
+    }
+
+    .formulario-cabecalho h2 {
+        font-size: 24px;
+    }
+
+    .resumo-pedido {
+        margin-bottom: 18px;
+        padding: 12px;
+    }
+
+    .campo {
+        margin-bottom: 14px;
+    }
+
+    .campo input,
+    .campo textarea,
+    .campo select {
+        min-height: 45px;
+    }
+
+    .botao-largo {
+        padding: 13px 12px;
+        font-size: 12px;
+    }
+}
+
+/* ==================================================
+   16. CELULARES PEQUENOS
+================================================== */
+
+@media (max-width: 360px) {
+    .cabecalho {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    .logo {
+        font-size: 16px;
+        gap: 5px;
+    }
+
+    .hero {
+        padding: 32px 13px;
+        min-height: 390px;
+    }
+
+    .hero h1 {
+        font-size: 30px;
+    }
+
+    .secao {
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+
+    .grade-cardapio {
+        gap: 12px;
+    }
+
+    .card-conteudo {
+        padding: 13px;
+    }
+
+    .card-rodape {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    .botao-pedir {
+        width: 100%;
+    }
+
+    .chamada-pedido {
+        width: calc(100% - 16px);
+        padding: 20px 13px;
+    }
+
+    .modal-pedido-conteudo {
+        padding: 20px 12px;
+    }
+
+    .resumo-pedido {
+        gap: 8px;
+        padding: 10px;
+    }
+
+    .resumo-pedido .resumo-valor {
+        font-size: 15px;
+    }
+
+    .quantidade-botoes {
+        gap: 9px;
+    }
+}
+
+/* ==================================================
+   17. TELAS BAIXAS NA HORIZONTAL
+================================================== */
+
+@media (max-height: 500px) and (orientation: landscape) {
+    .modal {
+        align-items: flex-start;
+    }
+
+    .modal-conteudo {
+        margin: auto 0;
+        max-height: calc(100dvh - 16px);
+    }
+
+    .detalhe-imagem {
+        height: 180px;
+    }
+
+    .hero {
+        min-height: 350px;
+    }
+}
+
+/* ==================================================
+   18. ACESSIBILIDADE E MOVIMENTO
+================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+
+/* ==================================================
+   19. REFORÇO DE RESPONSIVIDADE GLOBAL
+   Adicione este bloco ao FINAL do style.css
+================================================== */
+
+/* Evita que elementos largos provoquem rolagem horizontal */
+html,
+body {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: clip;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+img,
+video,
+iframe,
+svg {
+    max-width: 100%;
+}
+
+input,
+textarea,
+select,
+button {
+    min-width: 0;
+}
+
+/* Textos longos não devem estourar o layout */
+h1,
+h2,
+h3,
+p,
+a,
+label,
+strong,
+span {
+    overflow-wrap: break-word;
+}
+
+/* Mantém os links de navegação dentro do cabeçalho */
+.cabecalho {
+    flex-wrap: wrap;
+}
+
+.logo {
+    flex-shrink: 0;
+}
+
+.navegacao {
+    min-width: 0;
+    flex-wrap: wrap;
+}
+
+/* Imagens e cartões se adaptam ao espaço disponível */
+.grade-cardapio {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.card-prato {
+    display: flex;
+    flex-direction: column;
+}
+
+.card-imagem-botao {
+    flex-shrink: 0;
+}
+
+.card-prato img {
+    object-fit: cover;
+}
+
+.card-conteudo {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+}
+
+.card-conteudo p {
+    flex: 1;
+}
+
+.card-rodape {
+    margin-top: auto;
+}
+
+/* Rodapé organizado e sem estouro de conteúdo */
+.rodape {
+    overflow: hidden;
+}
+
+.rodape a {
+    overflow-wrap: anywhere;
+}
+
+.rodape .logo-rodape {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* A chamada final pode quebrar sem ultrapassar a tela */
+.chamada-pedido {
+    min-width: 0;
+}
+
+.chamada-pedido > div,
+.chamada-pedido > a,
+.chamada-pedido > button {
+    min-width: 0;
+    max-width: 100%;
+}
+
+/* ==================================================
+   20. NOTEBOOKS E TABLETS NA HORIZONTAL
+================================================== */
+
+@media (max-width: 1024px) {
+    .cabecalho {
+        gap: 12px;
+    }
+
+    .navegacao {
+        flex: 1;
+        justify-content: flex-end;
+        gap: 12px;
+    }
+
+    .navegacao a {
+        white-space: normal;
+        text-align: center;
+    }
+
+    .grade-cardapio {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .card-prato img {
+        height: clamp(180px, 26vw, 260px);
+    }
+}
+
+/* ==================================================
+   21. TABLETS E CELULARES GRANDES
+================================================== */
+
+@media (max-width: 768px) {
+    .cabecalho {
+        flex-wrap: nowrap;
+    }
+
+    .logo {
+        max-width: calc(100% - 50px);
+        white-space: normal;
+    }
+
+    .navegacao {
+        flex-wrap: nowrap;
+    }
+
+    .grade-cardapio {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .card-prato img {
+        height: clamp(170px, 28vw, 230px);
+    }
+
+    .card-rodape {
+        align-items: flex-start;
+    }
+
+    .preco {
+        white-space: normal;
+        overflow-wrap: anywhere;
+    }
+
+    .chamada-pedido {
+        flex-wrap: wrap;
+    }
+}
+
+/* ==================================================
+   22. CELULARES
+================================================== */
+
+@media (max-width: 600px) {
+    .cabecalho {
+        flex-wrap: nowrap;
+    }
+
+    .navegacao {
+        flex: initial;
+    }
+
+    .navegacao.ativo {
+        display: flex;
+    }
+
+    .grade-cardapio {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .card-prato img {
+        height: clamp(190px, 60vw, 310px);
+    }
+
+    .card-conteudo {
+        padding: 16px;
+    }
+
+    .card-rodape {
+        align-items: center;
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+    .botao-pedir {
+        max-width: 100%;
+    }
+
+    .chamada-pedido {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .chamada-pedido > div {
+        width: 100%;
+    }
+
+    /* Os modais usam toda a largura útil da tela */
+    .modal {
+        padding: 8px;
+    }
+
+    .modal-conteudo {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .detalhe-total,
+    .quantidade-controle {
+        flex-wrap: wrap;
+    }
+
+    .resumo-pedido {
+        align-items: flex-start;
+    }
+
+    .resumo-pedido > div {
+        overflow-wrap: anywhere;
+    }
+
+    .campo input,
+    .campo select,
+    .campo textarea {
+        width: 100%;
+        max-width: 100%;
+    }
+}
+
+/* ==================================================
+   23. CELULARES ESTREITOS
+================================================== */
+
+@media (max-width: 380px) {
+    .logo {
+        font-size: 15px;
+    }
+
+    .menu-toggle {
+        font-size: 25px;
+    }
+
+    .hero h1 {
+        font-size: clamp(27px, 8vw, 32px);
+    }
+
+    .titulo-secao h2 {
+        font-size: 24px;
+    }
+
+    .card-rodape {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    .botao-pedir {
+        width: 100%;
+    }
+
+    .quantidade-controle {
+        align-items: flex-start;
+    }
+
+    .resumo-pedido {
+        flex-wrap: wrap;
+    }
+
+    .resumo-pedido .resumo-valor {
+        white-space: normal;
+    }
+}
+
+/* ==================================================
+   24. MELHORIAS PARA TOQUE EM CELULARES
+================================================== */
+
+@media (hover: none) {
+    .card-prato:hover,
+    .botao:hover {
+        transform: none;
+    }
+
+    .card-imagem-botao:hover img {
+        transform: none;
+    }
+
+    .botao,
+    .botao-pedir,
+    .menu-toggle,
+    .fechar-modal,
+    .quantidade-botoes button {
+        touch-action: manipulation;
+    }
+}
+
+
+/* ==================================================
+   CARRINHO DE COMPRAS — SABOR DA CASA
+================================================== */
+
+.botao-carrinho {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-height: 42px;
+    padding: 9px 14px;
+    border: 0;
+    border-radius: 8px;
+    background: var(--laranja);
+    color: var(--branco);
+    font-size: 13px;
+    font-weight: 800;
+    white-space: nowrap;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.2s;
+}
+
+.botao-carrinho:hover {
+    background: var(--laranja-escuro);
+    transform: translateY(-1px);
+}
+
+.contador-carrinho {
+    display: inline-grid;
+    place-items: center;
+    min-width: 23px;
+    height: 23px;
+    padding: 0 5px;
+    border-radius: 999px;
+    background: var(--branco);
+    color: var(--laranja-escuro);
+    font-size: 12px;
+    font-weight: 800;
+}
+
+/* JANELA DA SACOLA */
+
+.carrinho-conteudo {
+    width: 100%;
+    max-width: 700px;
+    padding: clamp(16px, 3vw, 28px);
+}
+
+.carrinho-cabecalho {
+    padding-right: 40px;
+    margin-bottom: 18px;
+}
+
+.carrinho-cabecalho h2 {
+    margin: 7px 0;
+    font-size: clamp(23px, 3vw, 30px);
+    line-height: 1.25;
+}
+
+.carrinho-cabecalho p {
+    margin-top: 5px;
+    color: var(--cinza);
+    font-size: 13px;
+}
+
+.itens-carrinho {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.carrinho-vazio {
+    padding: 24px 12px;
+    color: var(--cinza);
+    text-align: center;
+}
+
+/* ITEM DO CARRINHO */
+
+.item-carrinho {
+    display: grid;
+    grid-template-columns: 72px minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--borda);
+}
+
+.item-carrinho > img {
+    width: 72px;
+    height: 72px;
+    border-radius: 8px;
+    object-fit: cover;
+    background: #eee4dc;
+}
+
+.item-carrinho-info {
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.item-carrinho-info strong {
+    font-size: 14px;
+    overflow-wrap: anywhere;
+}
+
+.item-carrinho-info span {
+    color: var(--cinza);
+    font-size: 11px;
+}
+
+.item-carrinho-info b {
+    color: var(--laranja-escuro);
+    font-size: 14px;
+}
+
+.item-carrinho-controles {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+    gap: 7px;
+}
+
+.item-carrinho-controles button:not(.remover-item) {
+    width: 30px;
+    height: 30px;
+    border: 1px solid var(--borda);
+    border-radius: 6px;
+    background: var(--fundo);
+    color: var(--texto);
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.item-carrinho-controles button:not(.remover-item):hover {
+    background: #f7e4d5;
+}
+
+.item-carrinho-controles span {
+    min-width: 18px;
+    text-align: center;
+    font-weight: 700;
+}
+
+.item-carrinho-controles .remover-item {
+    padding: 6px 8px;
+    border: 0;
+    border-radius: 5px;
+    background: #fff0e8;
+    color: #a43c16;
+    font-size: 11px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.item-carrinho-controles .remover-item:hover {
+    background: #f9dfd2;
+}
+
+/* TOTAL DA SACOLA */
+
+.resumo-carrinho {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-top: 18px;
+    padding: 16px;
+    border-radius: 9px;
+    background: #fff5ed;
+}
+
+.resumo-carrinho span {
+    color: var(--cinza);
+    font-size: 13px;
+}
+
+.resumo-carrinho strong {
+    color: var(--laranja-escuro);
+    font-size: 22px;
+}
+
+/* BOTÕES DE AÇÃO */
+
+.acoes-carrinho {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 16px;
+}
+
+.botao-secundario {
+    min-height: 46px;
+    padding: 12px 16px;
+    border: 1px solid var(--borda);
+    border-radius: 7px;
+    background: var(--branco);
+    color: var(--texto);
+    font-size: 13px;
+    font-weight: 800;
+    cursor: pointer;
+}
+
+.botao-secundario:hover {
+    background: var(--fundo);
+}
+
+#irFinalizarPedido:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+}
+
+/* RESPONSIVIDADE */
+
+@media (max-width: 768px) {
+    .botao-carrinho {
+        padding: 8px 10px;
+        font-size: 12px;
+    }
+
+    .item-carrinho {
+        grid-template-columns: 60px minmax(0, 1fr);
+        gap: 10px;
+    }
+
+    .item-carrinho > img {
+        width: 60px;
+        height: 60px;
+    }
+
+    .item-carrinho-controles {
+        grid-column: 2;
+        justify-content: flex-start;
+    }
+}
+
+@media (max-width: 600px) {
+    .cabecalho {
+        gap: 8px;
+    }
+
+    .botao-carrinho {
+        min-height: 40px;
+        padding: 8px;
+        font-size: 11px;
+    }
+
+    .contador-carrinho {
+        min-width: 21px;
+        height: 21px;
+    }
+
+    .carrinho-conteudo {
+        max-width: 100%;
+        padding: 20px 14px;
+    }
+
+    .item-carrinho {
+        grid-template-columns: 52px minmax(0, 1fr);
+        gap: 9px;
+    }
+
+    .item-carrinho > img {
+        width: 52px;
+        height: 52px;
+    }
+
+    .item-carrinho-info strong {
+        font-size: 13px;
+    }
+
+    .item-carrinho-controles {
+        grid-column: 1 / -1;
+        justify-content: flex-start;
+        padding-left: 0;
+    }
+
+    .acoes-carrinho {
+        grid-template-columns: 1fr;
+    }
+
+    .resumo-carrinho {
+        padding: 13px;
+    }
+
+    .resumo-carrinho strong {
+        font-size: 19px;
+    }
+}
+
+@media (max-width: 360px) {
+    .botao-carrinho {
+        gap: 5px;
+        font-size: 10px;
+    }
+
+    .carrinho-cabecalho h2 {
+        font-size: 22px;
+    }
+
+    .resumo-carrinho {
+        flex-wrap: wrap;
+    }
+}
+

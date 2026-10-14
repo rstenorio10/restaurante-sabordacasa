@@ -1,0 +1,345 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description" content="Confira nosso cardápio e faça seu pedido online.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sabor da Casa | Cardápio Digital</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+</head>
+
+<body>
+
+    <!-- CABEÇALHO -->
+    <header class="cabecalho">
+        <a href="#inicio" class="logo">
+            <span>🍽️</span>
+            Sabor <strong>da Casa</strong>
+        </a>
+
+        <button class="menu-toggle" id="menuToggle"
+                type="button" aria-label="Abrir menu"
+                aria-expanded="false">
+            ☰
+        </button>
+
+        <nav class="navegacao" id="navegacao">
+            <a href="#inicio">Início</a>
+            <a href="#pratos-dia">Pratos do dia</a>
+            <a href="#especiais">Especiais</a>
+            <a href="#bebidas">Bebidas</a>
+        </nav>
+
+        
+        <button
+            type="button"
+            class="botao-carrinho"
+            id="abrirCarrinho"
+            aria-label="Abrir carrinho"
+        >
+            🛒 Sacola
+            <span class="contador-carrinho" id="contadorCarrinho">0</span>
+        </button>
+
+    </header>
+
+    <main>
+        <!-- DESTAQUE -->
+        <section class="hero" id="inicio">
+            <div class="hero-conteudo">
+                <span class="etiqueta">COMIDA BOA, FEITA COM CARINHO</span>
+
+                <h1>Seu dia fica melhor com <span>comida de verdade.</span></h1>
+
+                <p>
+                    Confira nosso cardápio, escolha seu prato favorito
+                    e faça seu pedido de forma simples e rápida.
+                </p>
+
+                <a href="#pratos-dia" class="botao botao-principal">
+                    Ver cardápio
+                </a>
+            </div>
+        </section>
+
+        <!-- PRATOS DO DIA -->
+        <section class="secao" id="pratos-dia">
+            <div class="titulo-secao">
+                <span class="subtitulo">SABOR CASEIRO</span>
+                <h2>Pratos do dia</h2>
+                <p>Escolha seu almoço favorito.</p>
+            </div>
+
+            <div class="grade-cardapio" id="listaPratosDia"></div>
+        </section>
+
+        <!-- ESPECIAIS -->
+        <section class="secao secao-especiais" id="especiais">
+            <div class="titulo-secao">
+                <span class="subtitulo">UMA EXPERIÊNCIA ESPECIAL</span>
+                <h2>Pratos especiais</h2>
+                <p>Experimente os destaques da nossa cozinha.</p>
+            </div>
+
+            <div class="grade-cardapio" id="listaEspeciais"></div>
+        </section>
+
+        <!-- BEBIDAS -->
+        <section class="secao" id="bebidas">
+            <div class="titulo-secao">
+                <span class="subtitulo">PARA ACOMPANHAR</span>
+                <h2>Bebidas</h2>
+                <p>Complete seu pedido com sua bebida favorita.</p>
+            </div>
+
+            <div class="grade-cardapio grade-bebidas" id="listaBebidas"></div>
+        </section>
+
+        <!-- CHAMADA -->
+        <section class="chamada-pedido">
+            <div>
+                <span class="subtitulo">ESTÁ COM FOME?</span>
+                <h2>Faça seu pedido agora!</h2>
+                <p>Escolha seu prato e receba atendimento pelo WhatsApp.</p>
+            </div>
+
+            <a href="#pratos-dia" class="botao botao-principal">
+                Escolher meu prato
+            </a>
+        </section>
+    </main>
+
+    <!-- RODAPÉ -->
+    <footer class="rodape">
+        <a href="#inicio" class="logo logo-rodape">
+            🍽️ Sabor <strong>da Casa</strong>
+        </a>
+
+        <p>Comida boa, momentos especiais.</p>
+        <p class="copyright">
+            © <span id="anoAtual"></span> R.
+            Todos os direitos reservados.
+        </p>
+    </footer>
+
+    <!-- MODAL: DETALHES DO PRATO -->
+    <div class="modal" id="modalPrato"
+         role="dialog" aria-modal="true"
+         aria-labelledby="detalheNome" aria-hidden="true">
+
+        <div class="modal-conteudo modal-prato-conteudo">
+            <button class="fechar-modal" type="button"
+                    data-fechar="modalPrato"
+                    aria-label="Fechar detalhes">
+                &times;
+            </button>
+
+            <img src="" alt="" id="detalheImagem" class="detalhe-imagem">
+
+            <div class="detalhe-corpo">
+                <span class="subtitulo" id="detalheCategoria">
+                    CARDÁPIO
+                </span>
+
+                <h2 id="detalheNome">Nome do prato</h2>
+
+                <p id="detalheDescricao"></p>
+
+                <div class="detalhe-preco" id="detalhePreco"></div>
+
+                <div class="quantidade-controle">
+                    <span>Quantidade</span>
+
+                    <div class="quantidade-botoes">
+                        <button type="button" id="diminuirQuantidade"
+                                aria-label="Diminuir quantidade">−</button>
+
+                        <span id="quantidadePrato">1</span>
+
+                        <button type="button" id="aumentarQuantidade"
+                                aria-label="Aumentar quantidade">+</button>
+                    </div>
+                </div>
+
+                <div class="detalhe-total">
+                    <span>Total do item</span>
+                    <strong id="detalheTotal"></strong>
+                </div>
+
+                <button type="button" class="botao botao-principal botao-largo"
+                        id="botaoPedirPrato">
+                    Pedir este prato
+                </button>
+            </div>
+        </div>
+    </div>
+
+    
+<!-- MODAL: SACOLA DE COMPRAS -->
+<div
+    class="modal"
+    id="modalCarrinho"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="tituloCarrinho"
+    aria-hidden="true"
+>
+    <div class="modal-conteudo carrinho-conteudo">
+
+        <button
+            class="fechar-modal"
+            type="button"
+            data-fechar="modalCarrinho"
+            aria-label="Fechar sacola"
+        >
+            &times;
+        </button>
+
+        <div class="carrinho-cabecalho">
+            <span class="subtitulo">SEU PEDIDO</span>
+            <h2 id="tituloCarrinho">Minha sacola 🛒</h2>
+            <p>
+                Confira os itens e ajuste as quantidades
+                antes de finalizar.
+            </p>
+        </div>
+
+        <div
+            class="itens-carrinho"
+            id="itensCarrinho"
+            aria-live="polite"
+        ></div>
+
+        <div class="resumo-carrinho">
+            <span>Total dos itens</span>
+            <strong id="totalCarrinho">R$ 0,00</strong>
+        </div>
+
+        <div class="acoes-carrinho">
+            <button
+                type="button"
+                class="botao-secundario"
+                id="continuarComprando"
+            >
+                Continuar comprando
+            </button>
+
+            <button
+                type="button"
+                class="botao botao-principal"
+                id="irFinalizarPedido"
+                disabled
+            >
+                Finalizar pedido
+            </button>
+        </div>
+
+    </div>
+</div>
+
+
+    <!-- MODAL: FINALIZAR PEDIDO -->
+    <div class="modal" id="modalPedido"
+         role="dialog" aria-modal="true"
+         aria-labelledby="tituloPedido" aria-hidden="true">
+
+        <div class="modal-conteudo modal-pedido-conteudo">
+            <button class="fechar-modal" type="button"
+                    data-fechar="modalPedido"
+                    aria-label="Fechar formulário">
+                &times;
+            </button>
+
+            <div class="formulario-cabecalho">
+                <span class="subtitulo">SÓ FALTA MAIS UM PASSO</span>
+                <h2 id="tituloPedido">Finalizar pedido</h2>
+                <p>Preencha seus dados para enviar o pedido pelo WhatsApp.</p>
+            </div>
+
+            <!-- RESUMO DO PEDIDO -->
+            <div class="resumo-pedido">
+                <div>
+                    <span class="resumo-label">Seu pedido</span>
+                    <strong id="resumoNome"></strong>
+                    <span id="resumoQuantidade"></span>
+                </div>
+
+                <strong class="resumo-valor" id="resumoTotal"></strong>
+            </div>
+
+            <!-- FORMULÁRIO -->
+            <form id="formPedido">
+
+                <div class="campo">
+                    <label for="nomeCliente">Nome completo *</label>
+                    <input type="text" id="nomeCliente" name="nome"
+                           placeholder="Digite seu nome"
+                           autocomplete="name" maxlength="100" required>
+                </div>
+
+                <div class="campo">
+                    <label for="telefoneCliente">Telefone / WhatsApp *</label>
+                    <input type="tel" id="telefoneCliente" name="telefone"
+                           placeholder="(11) 99999-9999"
+                           autocomplete="tel" inputmode="tel"
+                           maxlength="20" required>
+                </div>
+
+                <div class="campo">
+                    <label for="enderecoCliente">Endereço de entrega *</label>
+                    <textarea id="enderecoCliente" name="endereco"
+                              placeholder="Rua, número, bairro e complemento"
+                              autocomplete="street-address"
+                              maxlength="300" rows="3" required></textarea>
+                </div>
+
+                <div class="campo">
+                    <label for="pagamentoCliente">Forma de pagamento *</label>
+                    <select id="pagamentoCliente" name="pagamento" required>
+                        <option value="">Selecione uma opção</option>
+                        <option value="Pix">Pix</option>
+                        <option value="Dinheiro">Dinheiro</option>
+                        <option value="Cartão de débito">Cartão de débito</option>
+                        <option value="Cartão de crédito">Cartão de crédito</option>
+                    </select>
+                </div>
+
+                <div class="campo" id="campoTroco" hidden>
+                    <label for="trocoCliente">Troco para quanto?</label>
+                    <input type="number" id="trocoCliente" name="troco"
+                           min="0" step="0.01"
+                           placeholder="Ex.: 50,00">
+                    <small>Informe o valor da nota para calcular o troco.</small>
+                </div>
+
+                <div class="aviso-pedido">
+                    Confira seus dados antes de confirmar. O pedido será
+                    preparado em uma mensagem para o WhatsApp do restaurante.
+                </div>
+
+                <button type="submit"
+                        class="botao botao-principal botao-largo"
+                        id="botaoConfirmar">
+                    Confirmar pedido pelo WhatsApp
+                </button>
+
+                <p class="nota-seguranca">
+                    O pedido só será enviado após você confirmar o envio
+                    na conversa do WhatsApp.
+                </p>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
